@@ -12,10 +12,5 @@
         "psr-4": {
             "Digidennis\\SitePack\\": "Classes"
         }
-    },
-    "extra": {
-        "neos": {
-            "package-key": "Digidennis.SitePack"
-        }
     }
 }
