@@ -1,0 +1,335 @@
+@import 'ContentTypes/Button';
+@import 'ContentTypes/Icon';
+@import 'ContentTypes/Keyvisual';
+@import 'ContentTypes/Slick';
+@import 'ContentTypes/Square';
+@import 'ContentTypes/Circle';
+
+
+html.document-noscroll {
+  height: 100%;
+  @media screen {
+    @media (max-width: 1349px) {
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+      section.content{
+        filter:blur(5px);
+      }
+    }
+  }
+}
+
+body{
+  font-size: 16px;
+  font-family: "Nunito Sans", "Open Sans", sans-serif;
+  font-weight: 300;
+}
+h1{
+  font-weight:900;
+  text-transform: uppercase;
+  font-size: 2em;
+}
+h2{
+  font-weight:200;
+}
+
+*[class^="col-"]{
+  img{
+    width:100%;
+    height:auto;
+  }
+}
+/**
+* HEADER STUFF
+*/
+
+.digidennis-sitepack-siteheader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  min-width: 20em;
+  height: 60px;
+  transition: all .5s ease;
+  background: linear-gradient(to bottom,rgba(0, 0, 0, 0.35) 0,transparent 100%);
+  color: #FFF;
+  .sitelogo img {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    z-index: 1;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: auto;
+    max-width: 200px;
+    height: 30px;
+    fill: currentColor;
+    transition: all .3s ease;
+  }
+  .navtoggler {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    z-index: 1;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  @media screen {
+    @media (min-width: 650px) {
+      height: 80px;
+    }
+    @media (max-width: 1349px) {
+      nav{
+        position: fixed;
+        top: 0;
+        right: 0;
+        -webkit-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        transform: translateY(-100%);
+        width: 100%;
+        height: 100%;
+        padding: 5em 15px 1.5em;
+        background: linear-gradient(to bottom,rgba(76, 76, 76, 0.85) 0,#ffffff 100%);
+        transition: .5s ease opacity;
+        opacity: 0;
+        &.navigation-open {
+          -webkit-transform: translateX(0);
+          -ms-transform: translateX(0);
+          transform: translateX(0);
+          opacity: 1;
+          .nav-wrap{
+            -webkit-transform: translateY(0);
+            -ms-transform: translateY(0);
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+        .nav-wrap {
+          height: 100%;
+          overflow: hidden;
+          -webkit-transform: translateY(-35px);
+          -ms-transform: translateY(-35px);
+          transform: translateY(-35px);
+          transition: .5s .3s ease all;
+          opacity: 0;
+        }
+      }
+    }
+    @media (min-width: 1350px) {
+      &.siteheader-hidden {
+        -webkit-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        transform: translateY(-100%);
+      }
+      &.siteheader-shaded {
+        height: 55px;
+        background: #5f5f5f;
+        .sitelogo img {
+          height: 35px;
+        }
+      }
+      .sitelogo img {
+        left: 52px;
+        height: 50px;
+      }
+      .navtoggler {
+        display: none;
+        visibility: hidden;
+      }
+    }
+  }
+}
+
+.nav, .nav-sublist {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  & > li {
+    & > a {
+      padding: 0;
+      display: block;
+      transition: all .3s ease;
+      color: currentColor;
+      &:hover, &:active, &:focus{
+        text-decoration: none;
+        background-color: unset;
+      }
+    }
+  }
+}
+
+.digidennis-sitepack-siteheader .nav {
+  font-weight: 400;
+  font-size: .95em;
+  line-height: 26px;
+  & > li {
+    position: relative;
+  }
+  @media screen{
+    @media (max-width: 649px) {
+      li.topcat{
+        width: 100%!important;
+        float: none!important;
+      }
+    }
+    @media (max-width: 1349px) {
+      margin-right: -16px;
+      overflow-y: scroll;
+      height: 100%;
+      &:before,
+      &:after {
+        content: '';
+        display: table;
+      }
+      &:after {
+        clear: both;
+      }
+      li.topcat {
+        width: 50%;
+        margin-bottom: 26px;
+        float: left;
+        &:nth-child(odd) {
+          clear: both;
+        }
+        & > a {
+          font-size: 1.3em;
+          font-weight: 100;
+          margin-top: 5px;
+          margin-bottom: 3px;
+        }
+      }
+    }
+    @media (min-width: 1350px) {
+      position: absolute;
+      top: 50%;
+      right: 3em;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      & > li{
+        display: inline-block;
+        margin-left: 52px;
+        & > a {
+          padding: 5px 0;
+        }
+        &:hover > .nav-sublist {
+          opacity: 1;
+          -webkit-transform: translateX(-50%) translateY(0px);
+          -ms-transform: translateX(-50%) translateY(0px);
+          transform: translateX(-50%) translateY(0px);
+          pointer-events: all;
+        }
+        &:last-child:hover > .nav-sublist {
+          -webkit-transform: translateY(0);
+          -ms-transform: translateY(0);
+          transform: translateY(0);
+        }
+        &:last-child > .nav-sublist {
+          right: 0;
+          left: auto;
+          -webkit-transform: translateY(-10px);
+          -ms-transform: translateY(-10px);
+          transform: translateY(-10px);
+          &:after {
+            left: 92%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.digidennis-sitepack-siteheader .nav-sublist {
+  & > li{
+    display: block;
+  }
+  @media screen and (min-width: 1350px) {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-10px);
+    -ms-transform: translateX(-50%) translateY(-10px);
+    transform: translateX(-50%) translateY(-10px);
+    width: 300px;
+    background: #FFF;
+    border-radius: 3px;
+    padding: 10px 20px;
+    font-weight: 300;
+    font-size: 14px;
+    opacity: 0;
+    transition: all .3s ease;
+    pointer-events: none;
+    color: #656a71;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    &:after {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      margin-left: -2.5px;
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      border: solid 5px;
+      border-color: transparent transparent #fff transparent;
+    }
+  }
+  & > li > a:hover {
+    color: currentColor;
+  }
+}
+
+.digidennis-sitepack-sitefooter {
+  color:white;
+  background-color: #5a5a5a;
+  .sitelogo img{
+    max-width: 200px;
+  }
+}
+
+.hamburger {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 18px;
+  color: currentColor;
+  &:hover, &:focus
+  {
+    color: currentColor;
+  }
+  .hamburger-line {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    transition: .5s ease transform;
+    border-radius: 4px;
+    background-color: currentColor;
+  }
+  .hamburger-line-top
+  {
+    top: 2px;
+  }
+  .hamburger-line-bottom
+  {
+    top: auto;
+    bottom: 0;
+  }
+}
+
+.hamburger-active {
+  .hamburger-line-top {
+    -webkit-transform: translate3d(8px, 1px, 0) rotate(45deg) scaleX(0.7);
+    transform: translate3d(8px, 1px, 0) rotate(45deg) scaleX(0.7);
+  }
+  .hamburger-line-bottom {
+    -webkit-transform: translate3d(8px, -1px, 0) rotate(-45deg) scaleX(0.7);
+    transform: translate3d(8px, -1px, 0) rotate(-45deg) scaleX(0.7);
+  }
+}
+

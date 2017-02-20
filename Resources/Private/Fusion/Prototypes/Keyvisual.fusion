@@ -1,0 +1,6 @@
+prototype(Digidennis.SitePack:Keyvisual) < prototype(Content){
+    attributes.class = 'keyvisual'
+    main = ContentCollection{
+        nodePath = 'main'
+    }
+}

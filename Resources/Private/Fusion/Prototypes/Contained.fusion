@@ -1,0 +1,6 @@
+prototype(Digidennis.SitePack:Contained) < prototype(Content){
+    attributes.class = 'container'
+    main = ContentCollection{
+        nodePath = 'main'
+    }
+}

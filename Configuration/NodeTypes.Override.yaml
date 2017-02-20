@@ -1,0 +1,93 @@
+Neos.Neos:ContentCollection:
+  superTypes:
+    Digidennis.SitePack:Classable: TRUE
+
+Neos.NodeTypes:Page:
+  superTypes:
+    Digidennis.SitePack:Metamenuable: TRUE
+
+'Neos.NodeTypes:Column':
+  properties:
+    breakpoint:
+      type: string
+      defaultValue: 'md'
+      ui:
+        label: 'Breakpoint'
+        inspector:
+          group: 'column'
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              'xs':
+                label: 'xs'
+              'sm':
+                label: 'sm'
+              'md':
+                label: 'md'
+              'lg':
+                label: 'lg'
+
+##
+# Adjust the "TwoColumn" node type:
+# Disable some of the layout options, override labels and set the default layout
+#
+'Neos.NodeTypes:TwoColumn':
+  properties:
+    'layout':
+      defaultValue: '6-6'
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '50-50': ~
+              '75-25': ~
+              '25-75': ~
+              '66-33': ~
+              '33-66': ~
+              '6-6':
+                label: '--|--'
+              '8-4':
+                label: '---|-'
+              '4-8':
+                label: '-|---'
+
+##
+# Adjust the "ThreeColumn" node type:
+# Disable some of the layout options, override labels and set the default layout
+#
+'Neos.NodeTypes:ThreeColumn':
+  properties:
+    'layout':
+      defaultValue: '4-4-4'
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '33-33-33': ~
+              '50-25-25': ~
+              '25-50-25': ~
+              '25-25-50': ~
+              '4-4-4':
+                label: '--|--|--'
+              '6-4-2':
+                label: '---|--|-'
+              '3-6-3':
+                label: '-|----|-'
+              '3-3-6':
+                label: '-|-|----'
+
+##
+# Adjust the "FourColumn" node type:
+# Disable some of the layout options, override labels and set the default layout
+#
+'Neos.NodeTypes:FourColumn':
+  properties:
+    'layout':
+      defaultValue: '3-3-3-3'
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '25-25-25-25': ~
+              '3-3-3-3':
+                label: '-|-|-|-'

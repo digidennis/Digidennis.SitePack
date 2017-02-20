@@ -1,0 +1,3 @@
+prototype(Digidennis.SitePack:Icon) < prototype(Content){
+    attributes.class = ${q(node).property('size')}
+}

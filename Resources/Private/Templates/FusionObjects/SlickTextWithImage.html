@@ -1,0 +1,5 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+<div{attributes -> f:format.raw()}>
+    <f:render partial="SlickImage" arguments="{_all}" />
+    {neos:contentElement.editable(property: 'text', class:'slick-text')}
+</div>

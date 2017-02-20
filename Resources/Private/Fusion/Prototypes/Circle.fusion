@@ -1,0 +1,3 @@
+prototype(Digidennis.SitePack:Circle) < prototype(Content){
+    text = ${q(node).property('text')}
+}

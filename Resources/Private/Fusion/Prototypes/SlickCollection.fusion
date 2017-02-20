@@ -1,0 +1,49 @@
+prototype(Digidennis.SitePack:SlickCollection) < prototype(Neos.Neos:ContentCollection){
+
+    @context.options = Neos.Fusion:RawArray{
+        autoplay = ${q(node).children('slick').property('autoplay') ? true : false}
+        adaptiveHeight = ${q(node).children('slick').property('adaptiveHeight') ? true : false}
+        variableWidth = ${q(node).children('slick').property('variableWidth') ? true : false}
+        accessibility = ${q(node).children('slick').property('accessibility') ? true : false}
+        autoplaySpeed = ${q(node).children('slick').property('autoplaySpeed')}
+        arrows = ${q(node).children('slick').property('arrows') ? true : false}
+        centerMode = ${q(node).children('slick').property('centerMode') ? true : false}
+        centerPadding = ${q(node).children('slick').property('centerPadding')}
+        dots = ${q(node).children('slick').property('dots') ? true : false}
+        draggable = ${q(node).children('slick').property('draggable') ? true : false}
+        fade = ${q(node).children('slick').property('fade') ? true : false}
+        infinite = ${q(node).children('slick').property('infinite') ? true : false}
+        lazyLoad = ${q(node).children('slick').property('lazyLoad')}
+        slidesToShow = ${q(node).children('slick').property('slidesToShow')}
+    }
+
+    attributes{
+        class = "slick-node"
+        data-slick= ${Json.stringify(options)}
+        data-slick-thumbnav = ${q(node).property('thumbnav')? "1" : "0" }
+        data-slick-breakpoint="768"
+        data-slick-focusable="1"
+        data-slick-break="1"
+    }
+
+
+    prototype(Neos.NodeTypes:Image) {
+        templatePath = 'resource://Digidennis.SitePack/Private/Templates/TypoScriptObjects/SlickImage.html'
+        slideWidth = ${q(node).parent().property('slideWidth')}
+        slideHeight = ${q(node).parent().property('slideHeight')}
+        thumbnav = ${q(node).parent().property('thumbnav')}
+        allowCropping = ${q(node).parent().property('allowCropping')}
+        cropImage = ${q(node).parent().property('cropImage')}
+        options = ${options}
+    }
+
+    prototype(Neos.NodeTypes:TextWithImage) {
+        templatePath = 'resource://Digidennis.SitePack/Private/Templates/TypoScriptObjects/SlickTextWithImage.html'
+        slideWidth = ${q(node).parent().property('slideWidth')}
+        slideHeight = ${q(node).parent().property('slideHeight')}
+        thumbnav = ${q(node).parent().property('thumbnav')}
+        allowCropping = ${q(node).parent().property('allowCropping')}
+        cropImage = ${q(node).parent().property('cropImage')}
+        options = ${options}
+    }
+}

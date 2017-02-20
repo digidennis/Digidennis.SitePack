@@ -1,0 +1,21 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "digidennis/sitepack",
+    "require": {
+        "neos/neos": "*",
+        "neos/neos-nodetypes": "*",
+        "neos/twitter-bootstrap": "*",
+        "digidennis/minify": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Digidennis\\SitePack\\": "Classes"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Digidennis.SitePack"
+        }
+    }
+}

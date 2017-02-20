@@ -1,0 +1,6 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+{namespace media=Neos\Media\ViewHelpers}
+
+<figure {attributes -> f:format.raw()}>
+    <f:render partial="SlickImage" arguments="{_all}" />
+</figure>

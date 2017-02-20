@@ -1,0 +1,72 @@
+##
+# Special homepage nodetype that declares a footer child node for usage as shared footer.
+#
+Digidennis.SitePack:Homepage:
+  ui:
+    label: 'Homepage'
+    icon: 'icon-globe'
+    inlineEditable: TRUE
+    help:
+      message: 'The homepage type is to be used only once, adds collection for header & footer.'
+  superTypes:
+    'Neos.NodeTypes:Page': TRUE
+  childNodes:
+    headercontent:
+      position: 'start'
+      type: 'Neos.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': FALSE
+          'Neos.NodeTypes:Text': TRUE
+          'Neos.NodeTypes:Image': TRUE
+    footercontent:
+      position: 'before footermenu'
+      type: 'Neos.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': FALSE
+          'Neos.NodeTypes:ThreeColumn': TRUE
+          'Neos.NodeTypes:FourColumn': TRUE
+          'Neos.NodeTypes:TwoColumn': TRUE
+    footermenu:
+      position: 'end'
+      type: 'Neos.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': FALSE
+          'Neos.NodeTypes:ThreeColumn': TRUE
+          'Neos.NodeTypes:TwoColumn': TRUE
+  constraints:
+    nodeTypes:
+      Digidennis.SitePack:Homepage: FALSE
+  properties:
+    footerlegal:
+      type: string
+      defaultValue: 'Footer legal'
+      ui:
+        inlineEditable: TRUE
+    logo:
+      type: 'Neos\Media\Domain\Model\ImageInterface'
+      ui:
+        label: 'Header Logo'
+        inspector:
+          group: 'document'
+          editorOptions:
+            features:
+              crop: TRUE
+              resize: TRUE
+    brand:
+      type: 'Neos\Media\Domain\Model\ImageInterface'
+      ui:
+        label: 'Brand logo'
+        inspector:
+          group: 'document'
+          editorOptions:
+            features:
+              crop: TRUE
+              resize: TRUE
+
+Neos.NodeTypes:Page:
+  constraints:
+    nodeTypes:
+      'Digidennis.SitePack:Homepage': FALSE

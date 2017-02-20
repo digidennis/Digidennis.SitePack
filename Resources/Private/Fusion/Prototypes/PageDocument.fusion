@@ -1,0 +1,144 @@
+prototype(Neos.NodeTypes:Page.Document) < prototype(Page) {
+    head {
+        meta = Neos.Fusion:Template {
+            templatePath = 'resource://Digidennis.SitePack/Private/Templates/Page/Default.html'
+            sectionName = 'meta'
+        }
+        stylesheets.minify.sitepack-basic = Digidennis.Minify:Resource {
+            group = 'csshead'
+            path = Neos.Fusion:ResourceUri {
+                path = 'resource://Digidennis.SitePack/Public/Styles/SitePack.css'
+            }
+        }
+        stylesheets{
+            google-fonts = Neos.Fusion:Tag{
+                tagName = 'link'
+                attributes {
+                    rel = 'stylesheet'
+                    href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,200i,300,400,700,900"
+                }
+            }
+            fontawesome = Neos.Fusion:Tag{
+                tagName = 'link'
+                attributes {
+                    rel = 'stylesheet'
+                    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+                }
+            }
+            bootstrap = Neos.Fusion:Tag{
+                tagName = 'link'
+                attributes {
+                    rel = 'stylesheet'
+                    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+                    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+                    crossorigin="anonymous"
+                }
+            }
+            bootstrap-theme = Neos.Fusion:Tag{
+                tagName = 'link'
+                attributes {
+                    rel = 'stylesheet'
+                    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+                    integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+                    crossorigin="anonymous"
+                }
+            }
+            minify-output = Digidennis.Minify:Output{
+                type = 'css'
+                group = 'csshead'
+            }
+        }
+        javascripts.minify-output = Digidennis.Minify:Output{
+            type = 'js'
+            group = 'jshead'
+        }
+    }
+    body {
+        templatePath = 'resource://Digidennis.SitePack/Private/Templates/Page/Default.html'
+        sectionName = 'body'
+        parts {
+            menu = Menu{
+                templatePath = 'resource://Digidennis.SitePack/Private/Templates/TypoScriptObjects/Menu.html'
+                logo = ${q(site).filter("[instanceof Digidennis.SitePack:Homepage]").property('logo')}
+                logoalt = ${q(site).filter("[instanceof Digidennis.SitePack:Homepage]").property('title')}
+                postmenuitems = Neos.Fusion:Array
+                headercontent = ContentCollection{
+                    nodePath = ${q(site).children('headercontent').property('_path')}
+                }
+            }
+            footer = Content{
+                templatePath = 'resource://Digidennis.SitePack/Private/Templates/TypoScriptObjects/Footer.html'
+                brandlogo = ${q(site).filter("[instanceof Digidennis.SitePack:Homepage]").property('brand')}
+                logoalt = ${q(site).filter("[instanceof Digidennis.SitePack:Homepage]").property('title')}
+                site = ${site}
+                node = ${q(site).filter("[instanceof Digidennis.SitePack:Homepage]")}
+                content = ContentCollection{
+                    nodePath = ${q(site).children('footercontent').property('_path')}
+                }
+                menucollection = ContentCollection{
+                    nodePath = ${q(site).children('footermenu').property('_path')}
+                }
+                footerlegal = ${q(site).property('footerlegal')}
+                menu = Menu{
+                    templatePath = 'resource://Digidennis.SitePack/Private/Templates/TypoScriptObjects/FooterMenu.html'
+                    itemCollection = ${q(site).find('[instanceof Neos.NodeTypes:Page]').filter('[metamenuable=TRUE]').get()}
+                    maximumLevels = 1
+                }
+            }
+        }
+        content {
+            main = PrimaryContent {
+                nodePath = 'main'
+            }
+        }
+        javascripts.jquery = Neos.Fusion:Tag{
+            tagName = 'script'
+            attributes {
+                src="https://code.jquery.com/jquery-2.2.4.min.js"
+                integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+                crossorigin="anonymous"
+            }
+            @position = "before bootstrap"
+        }
+        javascripts.bootstrap = Neos.Fusion:Tag{
+            tagName = 'script'
+            attributes {
+                src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                crossorigin="anonymous"
+            }
+            @position = "before minify"
+        }
+        javascripts.minify {
+            scrollclass = Digidennis.Minify:Resource{
+                group = 'jsbody'
+                path = Neos.Fusion:ResourceUri {
+                    path = 'resource://Digidennis.SitePack/Public/Javascript/ScrollClassToggler.jquery.js'
+                }
+            }
+            classtoggler = Digidennis.Minify:Resource{
+                group = 'jsbody'
+                path = Neos.Fusion:ResourceUri {
+                    path = 'resource://Digidennis.SitePack/Public/Javascript/ClassToggler.jquery.js'
+                }
+            }
+            sitepack = Digidennis.Minify:Resource{
+                group = 'jsbody'
+                path = Neos.Fusion:ResourceUri {
+                    path = 'resource://Digidennis.SitePack/Public/Javascript/SitePack.js'
+                }
+            }
+            sitepack-backend = Digidennis.Minify:Resource{
+                group = 'jsbody'
+                path = Neos.Fusion:ResourceUri {
+                    path = 'resource://Digidennis.SitePack/Public/Javascript/SitePackBackend.js'
+                }
+                @if.inbackend = ${node.context.inBackend}
+            }
+        }
+        javascripts.minify-output = Digidennis.Minify:Output{
+            type = 'js'
+            group = 'jsbody'
+        }
+    }
+}

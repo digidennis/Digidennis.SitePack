@@ -1,0 +1,10 @@
+Digidennis.SitePack:Square:
+  ui:
+    label: 'A Square'
+    icon: 'icon-square'
+    inlineEditable: TRUE
+  superTypes:
+    'Neos.Neos:Content': TRUE
+  childNodes:
+    squarecontent:
+      type: Neos.Neos:ContentCollection

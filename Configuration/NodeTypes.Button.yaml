@@ -1,0 +1,52 @@
+Digidennis.SitePack:Button:
+  ui:
+    label: 'A Button'
+    icon: 'icon-arrow-circle-o-right'
+    inlineEditable: TRUE
+    inspector:
+      groups:
+        main:
+          label: 'Button'
+          position: 100
+          icon: 'icon-arrow-circle-o-right'
+  superTypes:
+    'Neos.Neos:Content': TRUE
+  properties:
+    link:
+      type: string
+      ui:
+        label: 'Link'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'main'
+          editor: 'Neos.Neos/Inspector/Editors/LinkEditor'
+    label:
+      type: string
+      ui:
+        inlineEditable: TRUE
+        label: 'Label'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'main'
+    design:
+      type: string
+      ui:
+        label: 'Design'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'main'
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              btn-primary:
+                label: 'Primary'
+              btn-default:
+                label: 'Default'
+    large:
+      type: boolean
+      ui:
+        label: 'Large'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'main'
+          editor: 'Neos.Neos/Inspector/Editors/BooleanEditor'

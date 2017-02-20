@@ -1,0 +1,31 @@
+Digidennis.SitePack:Classable:
+  abstract: TRUE
+  ui:
+    inspector:
+      groups:
+        classable:
+          label: 'CSS'
+          icon: 'icon-css3'
+          position: 600
+          tab: meta
+  properties:
+    class:
+      type: string
+      ui:
+        label: 'i18n'
+        inspector:
+          group: 'classable'
+          position: 10
+
+
+Digidennis.SitePack:Metamenuable:
+  abstract: TRUE
+  properties:
+    metamenuable:
+      type: boolean
+      defaultValue: FALSE
+      ui:
+        label: 'i18n'
+        inspector:
+          group: 'visibility'
+          position: 80

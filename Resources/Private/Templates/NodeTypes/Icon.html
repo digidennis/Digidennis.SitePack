@@ -1,0 +1,6 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+<f:if condition="{iconclass} != ''">
+<figure {attributes -> f:format.raw()}>
+    <i class="fa {iconclass}" ></i>
+</figure>
+</f:if>

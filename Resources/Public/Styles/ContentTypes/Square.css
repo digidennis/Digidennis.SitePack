@@ -1,0 +1,16 @@
+.digidennis-sitepack-square > .neos-contentcollection {
+  padding: 2em;
+  background-color: #9e9e9e;
+  color: white;
+  text-align: center;
+  margin: 0.8em auto;
+}
+.digidennis-sitepack-square.hascirclestart {
+  margin-top: 4em;
+}
+.digidennis-sitepack-square h1 {
+  margin-bottom: 1em;
+}
+.digidennis-sitepack-square .digidennis-sitepack-button {
+  margin-top: 1em;
+}

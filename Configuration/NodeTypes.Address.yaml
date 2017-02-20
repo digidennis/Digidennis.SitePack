@@ -1,0 +1,21 @@
+Digidennis.SitePack:Address:
+  ui:
+    label: 'Address'
+    icon: 'icon-list-alt'
+    inlineEditable: TRUE
+    inspector:
+      groups:
+        main:
+          label: 'Address'
+          position: 100
+          icon: 'icon-list-alt'
+  superTypes:
+    'Neos.Neos:Content': TRUE
+  properties:
+    address:
+      type: string
+      ui:
+        label: 'Link'
+        reloadIfChanged: TRUE
+        inlineEditable: TRUE
+

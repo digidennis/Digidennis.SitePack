@@ -1,0 +1,37 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+{namespace ts=Neos\Fusion\ViewHelpers}
+<header class="digidennis-sitepack-siteheader" data-scrollclasstoggler-config='{"100":{"class": "siteheader-hidden","removeOnReverse": true}, "400":{"class": "siteheader-shaded"}}'>
+
+    <neos:link.node node="~" class="sitelogo"><f:if condition="{logo}"><neos.media:image image="{logo}" alt="{logoalt}"/></f:if></neos:link.node>
+
+    <a href="javascript:void(0)" class="hamburger navtoggler" data-target-selector=".digidennis-sitepack-siteheader > nav" data-active-class="hamburger-active" data-document-active-class="document-noscroll" data-target-active-class="navigation-open">
+        <div class="hamburger-line hamburger-line-top"></div>
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line hamburger-line-bottom"></div>
+    </a>
+
+    <nav role="navigation">
+        <div class="nav-wrap">
+            <ul class="nav">
+                <f:render section="itemsList" arguments="{items: items}" />
+                {postmenuitems -> f:format.raw()}
+            </ul>
+        </div>
+    </nav>
+
+    {headercontent -> f:format.raw()}
+
+</header>
+
+<f:section name="itemsList">
+    <f:for each="{items}" as="item">
+        <li <f:if condition="{item.menuLevel} == 1">class="topcat"</f:if>>
+        <neos:link.node node="{item.node}">{item.label}</neos:link.node>
+        <f:if condition="{item.subItems}">
+            <ul class="nav-sublist">
+                <f:render section="itemsList" arguments="{items: item.subItems}" />
+            </ul>
+        </f:if>
+        </li>
+    </f:for>
+</f:section>

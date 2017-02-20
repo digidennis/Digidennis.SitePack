@@ -1,0 +1,10 @@
+Digidennis.SitePack:Keyvisual:
+  ui:
+    label: 'Keyvisual'
+    icon: 'icon-eye-slash'
+    inlineEditable: TRUE
+  superTypes:
+    'Neos.Neos:Content': TRUE
+  childNodes:
+    main:
+      type: Neos.Neos:ContentCollection

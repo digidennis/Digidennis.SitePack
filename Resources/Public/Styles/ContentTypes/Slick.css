@@ -1,0 +1,112 @@
+.slick-node .slick-prev,
+.slick-node .slick-next {
+  width: 30px;
+  height: 30px;
+  z-index: 1000;
+}
+.slick-node .slick-prev:before,
+.slick-node .slick-next:before {
+  font-size: 30px;
+  opacity: .35;
+  color: #ffffff;
+}
+.slick-node .slick-prev:hover:before,
+.slick-node .slick-next:hover:before {
+  opacity: 0.7;
+}
+.slick-node .slick-prev {
+  left: 8px;
+}
+.slick-node .slick-next {
+  right: 8px;
+}
+.slick-node .slick-slide img {
+  width: 100%;
+}
+.slick-node .slick-disabled:before {
+  opacity: 0.1!important;
+}
+.slick-focusable-wrap {
+  transition: all 0.2s ease-in;
+  background-color: transparent;
+  position: relative;
+}
+.slick-focusable-wrap > button {
+  outline: none;
+  border: none;
+  position: absolute;
+  font-size: 22px;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  background-color: transparent;
+  opacity: 0.5;
+}
+.slick-focusable-wrap > button:hover,
+.slick-focusable-wrap > button:focus {
+  outline: none;
+}
+.slick-focusable-wrap > button.slick-focusable-focus {
+  top: 0;
+  right: 0;
+  margin-right: 0.8em;
+  margin-top: 0.8em;
+}
+@media screen {
+  .slick-focusable-wrap > button.slick-focusable-focus {
+    display: none;
+  }
+}
+@media screen and (min-width: 992px) {
+  .slick-focusable-wrap > button.slick-focusable-focus {
+    display: block;
+  }
+}
+.slick-focusable-wrap > button.slick-focusable-close {
+  top: 16px;
+  left: 16px;
+  font-size: 35px;
+  opacity: 0;
+  display: none;
+}
+@media screen and (min-width: 992px) {
+  .slick-focusable-wrap.focused {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background-color: #464646;
+    height: 100%;
+    margin: 0 auto;
+  }
+  .slick-focusable-wrap.focused button.slick-focusable-focus {
+    opacity: 0;
+    display: none;
+  }
+  .slick-focusable-wrap.focused button.slick-focusable-close {
+    opacity: 0.5;
+    display: block;
+  }
+  .slick-focusable-wrap.focused .slick-dots button:before {
+    color: white;
+  }
+  .slick-focusable-wrap.focused .slick-focusable-inner {
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
+    vertical-align: top;
+    width: 75%;
+    margin: 0 auto;
+  }
+  .slick-focusable-wrap.focused .slick-node {
+    box-shadow: 0 6px 12px 2px rgba(0, 0, 0, 0.3);
+  }
+  .slick-focusable-wrap.focused .slick-node .slick-next {
+    right: -50px;
+  }
+  .slick-focusable-wrap.focused .slick-node .slick-prev {
+    left: -50px;
+  }
+}

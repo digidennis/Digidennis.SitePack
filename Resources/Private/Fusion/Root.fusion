@@ -1,0 +1,4 @@
+include: Override/*
+include: Prototypes/*
+
+#prototype(Neos.Neos:Content).prototype(Neos.Neos:ContentCollection).@cache.mode = 'cached'

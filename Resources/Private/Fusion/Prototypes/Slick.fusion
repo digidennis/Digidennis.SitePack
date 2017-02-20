@@ -1,0 +1,97 @@
+prototype(Digidennis.SitePack:Slick) < prototype(Content){
+
+    node = ${node}
+
+    slides = Neos.Fusion:Collection {
+        collection = ${q(node).children("slides").children()}
+        itemName = 'node'
+        itemRenderer = Neos.Fusion:Case {
+            headline {
+                condition = ${q(node).property('_nodeType.name') == 'Neos.NodeTypes:Headline'}
+                type = 'Neos.NodeTypes:Headline'
+            }
+            text {
+                condition = ${q(node).property('_nodeType.name') == 'Neos.NodeTypes:Text'}
+                type = 'Neos.NodeTypes:Text'
+            }
+            textwithimage {
+                condition = ${q(node).property('_nodeType.name') == 'Neos.NodeTypes:TextWithImage'}
+                type = 'Neos.NodeTypes:TextWithImage'
+            }
+            image {
+                condition = ${q(node).property('_nodeType.name') == 'Neos.NodeTypes:Image'}
+                type = 'Neos.NodeTypes:Image'
+            }
+        }
+    }
+
+    options = Neos.Fusion:RawArray{
+        autoplay = ${q(node).property('autoplay') ? true : false}
+        adaptiveHeight = ${q(node).property('adaptiveHeight') ? true : false}
+        variableWidth = ${q(node).property('variableWidth') ? true : false}
+        accessibility = ${q(node).property('accessibility') ? true : false}
+        autoplaySpeed = ${q(node).property('autoplaySpeed')}
+        arrows = ${q(node).property('arrows') ? true : false}
+        centerMode = ${q(node).property('centerMode') ? true : false}
+        centerPadding = ${q(node).property('centerPadding')}
+        dots = ${q(node).property('dots') ? true : false}
+        draggable = ${q(node).property('draggable') ? true : false}
+        fade = ${q(node).property('fade') ? true : false}
+        infinite = ${q(node).property('infinite') ? true : false}
+        lazyLoad = ${q(node).property('lazyLoad')}
+        slidesToShow = ${q(node).property('slidesToShow')}
+    }
+
+    @context.slideoptions = ${this.options}
+
+    prototype(Neos.NodeTypes:Image) {
+        templatePath = 'resource://Digidennis.SitePack/Private/Templates/TypoScriptObjects/SlickImage.html'
+        slideWidth = ${q(node).parent().parent().property('slideWidth')}
+        slideHeight = ${q(node).parent().parent().property('slideHeight')}
+        thumbnav = ${q(node).parent().parent().property('thumbnav')}
+        allowCropping = ${q(node).parent().parent().property('allowCropping')}
+        cropImage = ${q(node).parent().parent().property('cropImage')}
+        options = ${slideoptions}
+    }
+
+    prototype(Neos.NodeTypes:TextWithImage) {
+        templatePath = 'resource://Digidennis.SitePack/Private/Templates/TypoScriptObjects/SlickTextWithImage.html'
+        slideWidth = ${q(node).parent().parent().property('slideWidth')}
+        slideHeight = ${q(node).parent().parent().property('slideHeight')}
+        thumbnav = ${q(node).parent().parent().property('thumbnav')}
+        allowCropping = ${q(node).parent().parent().property('allowCropping')}
+        cropImage = ${q(node).parent().parent().property('cropImage')}
+        options = ${slideoptions}
+    }
+}
+
+##
+# Load JS & CSS as needed, can be configured
+#
+prototype(Neos.Neos:Page) {
+    @context.instancePresent = ${q(site).find('[instanceof Digidennis.SitePack:SlickCollection]').count() > 0}
+    head.stylesheets.minify.slick = Digidennis.Minify:Resource {
+        group = 'csshead'
+        path = Neos.Fusion:ResourceUri {
+            path = 'resource://Digidennis.SitePack/Public/Vendor/slick/slick.css'
+            @if.useCss = ${Configuration.setting('Digidennis.SitePack.Slick.useCss')}
+            #@if.instancePresent = ${instancePresent}
+        }
+    }
+    head.stylesheets.minify.slick-theme = Digidennis.Minify:Resource {
+        group = 'csshead'
+        path = Neos.Fusion:ResourceUri {
+            path = 'resource://Digidennis.SitePack/Public/Vendor/slick/slick-theme.css'
+        }
+        @if.useCss = ${Configuration.setting('Digidennis.SitePack.Slick.useCss')}
+        #@if.instancePresent = ${instancePresent}
+    }
+    body.javascripts.minify.slick = Digidennis.Minify:Resource {
+        group = 'jsbody'
+        path = Neos.Fusion:ResourceUri {
+            path = 'resource://Digidennis.SitePack/Public/Vendor/slick/slick.min.js'
+        }
+        #@if.renderBackend = ${node.context.inBackend && Configuration.setting('Digidennis.SitePack.Slick.renderBackend')}
+        #@if.instancePresent = ${instancePresent}
+    }
+}

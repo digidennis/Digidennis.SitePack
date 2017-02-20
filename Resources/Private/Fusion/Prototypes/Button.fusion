@@ -1,0 +1,9 @@
+prototype(Digidennis.SitePack:Button) < prototype(Content){
+    attributes.class = Neos.Fusion:RawArray{
+        btn = 'btn'
+        design = ${q(node).property('design')}
+        backend = ${node.context.inBackend ? "disabled" : ""}
+        size = ${q(node).property('large') ? "btn-lg" : ""}
+    }
+    link.@process.uri = Neos.Neos:ConvertUris
+}

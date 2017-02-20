@@ -1,0 +1,6 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+<div {attributes -> f:format.raw()}>
+    <figure>
+        {neos:contentElement.editable(property:'text', tag:'p')}
+    </figure>
+</div>

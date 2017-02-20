@@ -1,0 +1,33 @@
+prototype(Neos.Neos:ContentCollection){
+
+    # The following is used to automatically append class attribute with "neos-contentcollection" needed for editing.
+    # You can disable the following line with:
+    # prototype(Neos.Neos:ContentCollection) {
+    #   attributes.class.@process.collectionClass >
+    # }
+    # in your site's TypoScript if you don't need that behavior
+    attributes.class.@process.collectionClass = Neos.Fusion:Case {
+        @context.collectionClass = 'neos-contentcollection'
+        classIsString {
+            condition = ${Type.isString(value)}
+            renderer = ${String.trim(value + ' ' + collectionClass + ' ' + q(node).property('class'))}
+        }
+
+        classIsArray {
+            condition = ${Type.isArray(value)}
+            renderer = ${Array.push(value, collectionClass) + Array.push(value,q(node).property('class'))}
+        }
+    }
+}
+
+prototype(Neos.NodeTypes:MultiColumn) {
+    attributes.class = 'row'
+    columns.iterationName = 'multiColumnIteration'
+}
+
+##
+# Adjust "MultiColumnItem" element to Twitter bootstrap CSS classes
+#
+prototype(Neos.NodeTypes:MultiColumnItem) {
+    attributes.class = ${'col-' + q(node).parent().property('breakpoint') + '-' + String.split(q(node).parent().property('layout'), '-')[multiColumnIteration.index]}
+}

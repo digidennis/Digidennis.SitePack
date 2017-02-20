@@ -1,0 +1,10 @@
+Digidennis.SitePack:Contained:
+  ui:
+    label: 'Collection Container'
+    icon: 'icon-folder-open'
+    inlineEditable: TRUE
+  superTypes:
+    'Neos.Neos:Content': TRUE
+  childNodes:
+    main:
+      type: Neos.Neos:ContentCollection

@@ -1,0 +1,11 @@
+.digidennis-sitepack-keyvisual {
+  padding: 9em 2em;
+  margin: 0 auto;
+  background-color: #5f5f5f;
+  text-align: center;
+  color: white;
+}
+.digidennis-sitepack-keyvisual h1,
+.digidennis-sitepack-keyvisual h2 {
+  margin-top: 0;
+}

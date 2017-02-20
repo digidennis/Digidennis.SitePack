@@ -1,0 +1,13 @@
+Digidennis.SitePack:Circle:
+  ui:
+    label: 'A Circle'
+    icon: 'icon-circle'
+    inlineEditable: TRUE
+  superTypes:
+    'Neos.Neos:Content': TRUE
+  properties:
+    text:
+      type: string
+      label: 'Circle Text'
+      ui:
+        inlineEditable: TRUE

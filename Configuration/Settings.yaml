@@ -1,0 +1,27 @@
+Digidennis:
+  SitePack:
+    Slick:
+      'useCss': TRUE
+      'renderBackend': TRUE
+
+Neos:
+  ContentRepository:
+    contentDimensions:
+      'language':
+        label: 'Language'
+        icon: 'icon-language'
+        default: 'da'
+        defaultPreset: 'da'
+        presets:
+          'da':
+            label: 'Dansk'
+            values: ['da']
+            uriSegment: 'dansk'
+  Neos:
+    fusion:
+      autoInclude:
+        'Digidennis.SitePack': TRUE
+    userInterface:
+      translation:
+        autoInclude:
+          'Digidennis.SitePack': ['NodeTypes/*']

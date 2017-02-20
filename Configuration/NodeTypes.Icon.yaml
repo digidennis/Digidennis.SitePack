@@ -1,0 +1,36 @@
+Digidennis.SitePack:Icon:
+  ui:
+    label: 'Fa Icon'
+    icon: 'icon-fonticons'
+    inspector:
+      groups:
+        main:
+          label: 'Fa Icon'
+          position: 100
+          icon: 'icon-fonticons'
+  superTypes:
+    'Neos.Neos:Content': TRUE
+  properties:
+    iconclass:
+      type: string
+      ui:
+        label: 'Fa icon class'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'main'
+    size:
+      type: string
+      ui:
+        label: 'Size'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'main'
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              small:
+                label: 'Small'
+              medium:
+                label: 'Medium'
+              large:
+                label: 'Large'

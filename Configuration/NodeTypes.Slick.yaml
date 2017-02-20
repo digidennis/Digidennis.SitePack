@@ -1,0 +1,192 @@
+Digidennis.SitePack:Slick:
+  ui:
+    label: Slick Carrousel
+    icon: 'icon-ellipsis-horizontal'
+    inlineEditable: TRUE
+    inspector:
+      groups:
+        main:
+          label: 'Slick valgmuligheder'
+          position: 10
+        image:
+          label: 'Billed valgmuligheder'
+          position: 10
+  superTypes:
+    Neos.Neos:Content: TRUE
+  childNodes:
+    slides:
+      type: Neos.Neos:ContentCollection
+      constraints:
+        nodeTypes:
+          '*': FALSE
+          Neos.NodeTypes:Image: TRUE
+          Neos.NodeTypes:TextWithImage: TRUE
+          Neos.NodeTypes:Text: TRUE
+          Neos.NodeTypes:Headline: TRUE
+  properties:
+    autoplay:
+      type: boolean
+      defaultValue: FALSE
+      ui:
+        label: Autoplay
+        inspector:
+          group: main
+    adaptiveHeight:
+      type: boolean
+      defaultValue: FALSE
+      reloadIfChanged: TRUE
+      ui:
+        label: Adaptive Height
+        inspector:
+          group: main
+    variableWidth:
+      type: boolean
+      defaultValue: FALSE
+      reloadIfChanged: TRUE
+      ui:
+        label: Variable Slidewidth
+        inspector:
+          group: main
+    accessibility:
+      type: boolean
+      defaultValue: TRUE
+      ui:
+        label: Accessibility
+        inspector:
+          group: main
+    autoplaySpeed:
+      type: integer
+      defaultValue: 3000
+      ui:
+        label: Autoplay Speed in milliseconds
+        inspector:
+          group: main
+    arrows:
+      type: boolean
+      defaultValue: TRUE
+      ui:
+        label: Vis pile
+        reloadIfChanged: TRUE
+        inspector:
+          group: main
+    centerMode:
+      type: boolean
+      defaultValue: TRUE
+      ui:
+        label: Enables centered view
+        reloadIfChanged: TRUE
+        inspector:
+          group: main
+    centerPadding:
+      type: string
+      defaultValue: '50px'
+      ui:
+        label: Padding in centered
+        reloadIfChanged: TRUE
+        inspector:
+          group: main
+    dots:
+      type: boolean
+      defaultValue: TRUE
+      ui:
+        label: Enables dots
+        reloadIfChanged: TRUE
+        inspector:
+          group: main
+    draggable:
+      type: boolean
+      defaultValue: TRUE
+      ui:
+        label: Enable mouse dragging
+        inspector:
+          group: main
+    fade:
+      type: boolean
+      defaultValue: TRUE
+      ui:
+        label: Enable fade
+        reloadIfChanged: TRUE
+        inspector:
+          group: main
+    infinite:
+      type: boolean
+      defaultValue: FALSE
+      ui:
+        label: 'Infinite'
+        reloadIfChanged: TRUE
+        inspector:
+          group: main
+    thumbnav:
+      type: boolean
+      defaultValue: TRUE
+      ui:
+        label: Thumbnail nav
+        reloadIfChanged: TRUE
+        inspector:
+          group: main
+    lazyLoad:
+      type: string
+      defaultValue: ondemand
+      ui:
+        label: Lazy load technique
+        inspector:
+          group: main
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              ondemand:
+                label: 'On demand'
+              progressive:
+                label: 'Progressive'
+    slidesToShow:
+      type: integer
+      defaultValue: 1
+      ui:
+        label: 'No. of Visible Slides'
+        reloadIfChanged: TRUE
+        inspector:
+          group: main
+      validation:
+        'Neos.Neos/Validation/NumberRangeValidator':
+          minimum: 1
+          maximum: 100
+    cropImage:
+      type: boolean
+      defaultValue: FALSE
+      ui:
+        label: Crop Image
+        reloadIfChanged: TRUE
+        inspector:
+          group: image
+    slideWidth:
+      type: integer
+      defaultValue: 200
+      ui:
+        label: Bredde
+        reloadIfChanged: TRUE
+        inspector:
+          group: image
+      validation:
+        'Neos.Neos/Validation/NumberRangeValidator':
+          minimum: 40
+          maximum: 2000
+    slideHeight:
+      type: integer
+      defaultValue: 200
+      ui:
+        label: Højde
+        reloadIfChanged: TRUE
+        inspector:
+          group: image
+      validation:
+        'Neos.Neos/Validation/NumberRangeValidator':
+          minimum: 40
+          maximum: 1200
+    allowCropping:
+      type: boolean
+      defaultValue: TRUE
+      ui:
+        label: Allow Cropping
+        reloadIfChanged: TRUE
+        inspector:
+          group: image

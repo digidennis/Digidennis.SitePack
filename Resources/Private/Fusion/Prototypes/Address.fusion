@@ -1,0 +1,3 @@
+prototype(Digidennis.SitePack:Address) < prototype(Content){
+    address = ${q(node).property('address')}
+}

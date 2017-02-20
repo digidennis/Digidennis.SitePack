@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{namespace neos=Neos\Neos\ViewHelpers}
+{namespace ts=Neos\Fusion\ViewHelpers}
+<html>
+<head>
+	<f:section name="meta">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</f:section>
+</head>
+
+<body>
+
+<f:section name="body">
+
+	{parts.menu -> f:format.raw()}
+
+	<section class="content">
+		{content.main -> f:format.raw()}
+	</section>
+
+	{parts.footer -> f:format.raw()}
+
+</f:section>
+
+
+</body>
+</html>
