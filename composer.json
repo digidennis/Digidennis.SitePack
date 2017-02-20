@@ -4,7 +4,7 @@
     "name": "digidennis/sitepack",
     "require": {
         "neos/neos": "*",
-        "neos/neos-nodetypes": "*",
+        "neos/nodetypes": "*",
         "neos/twitter-bootstrap": "*",
         "digidennis/minify": "*"
     },
