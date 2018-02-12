@@ -1,0 +1,3 @@
+prototype(Digidennis.SitePack:ImageFixed) < prototype(Neos.NodeTypes:Image) {
+
+}

@@ -92,6 +92,7 @@ prototype(Neos.NodeTypes:Page.Document) < prototype(Page) {
                 }
                 footerlegal = ${q(site).property('footerlegal')}
                 menu = Menu{
+                    renderHiddenInIndex = true
                     templatePath = 'resource://Digidennis.SitePack/Private/Templates/FusionObjects/FooterMenu.html'
                     itemCollection = ${q(site).find('[instanceof Neos.NodeTypes:Page]').filter('[metamenuable=TRUE]').get()}
                     maximumLevels = 1
