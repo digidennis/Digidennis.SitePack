@@ -3,8 +3,28 @@ Digidennis.SitePack:Contained:
     label: 'Collection Container'
     icon: 'icon-folder-open'
     inlineEditable: TRUE
+    inspector:
+      groups:
+        main:
+          label: 'Settings'
+          position: 100
+          icon: 'icon-list-alt'
   superTypes:
     'Neos.Neos:Content': TRUE
-  childNodes:
-    main:
-      type: Neos.Neos:ContentCollection
+    'Neos.Neos:ContentCollection': TRUE
+  properties:
+    design:
+      type: string
+      ui:
+        label: 'Design'
+        reloadIfChanged: TRUE
+        defaultValue: 'normal'
+        inspector:
+          group: 'main'
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              normal:
+                label: 'Normal'
+              fluid:
+                label: 'Fluid'

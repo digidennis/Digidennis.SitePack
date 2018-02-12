@@ -1,0 +1,18 @@
+.digidennis-sitepack-pagelist {
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+.digidennis-sitepack-pagelist a {
+  display: block;
+  text-transform: uppercase;
+  color: currentcolor;
+}
+.digidennis-sitepack-pagelist img {
+  max-width: 120px;
+  height: auto;
+  margin-bottom: 15px;
+}
+.digidennis-sitepack-pagelist *[class^="col-"] {
+  margin-bottom: 30px;
+}

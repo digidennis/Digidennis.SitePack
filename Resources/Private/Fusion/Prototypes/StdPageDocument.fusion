@@ -1,0 +1,16 @@
+prototype(Digidennis.SitePack:StdPage.Document) < prototype(Neos.NodeTypes:Page.Document) {
+    bodyTag{
+        attributes.class = ${q(node).property('heroimage') ? 'heropage' : attributes.class }
+    }
+    body{
+        herocss = ${q(node).children('herocontent').property('class')}
+        showpagemenu = ${q(node).property('showpagemenu')}
+        heroimage = ImageUri{
+            asset = ${q(node).property('heroimage')}
+        }
+        herocontent = ContentCollection{
+            nodePath = 'herocontent'
+        }
+        templatePath = 'resource://Digidennis.SitePack/Private/Templates/Page/StdPage.html'
+    }
+}

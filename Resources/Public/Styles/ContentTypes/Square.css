@@ -1,4 +1,4 @@
-.digidennis-sitepack-square > .neos-contentcollection {
+.digidennis-sitepack-square {
   padding: 2em;
   background-color: #9e9e9e;
   color: white;
@@ -13,4 +13,7 @@
 }
 .digidennis-sitepack-square .digidennis-sitepack-button {
   margin-top: 1em;
+}
+.transparent.digidennis-sitepack-square {
+  background-color: transparent;
 }

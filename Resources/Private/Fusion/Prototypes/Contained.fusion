@@ -1,6 +1,3 @@
-prototype(Digidennis.SitePack:Contained) < prototype(Content){
-    attributes.class = 'container'
-    main = ContentCollection{
-        nodePath = 'main'
-    }
+prototype(Digidennis.SitePack:Contained) < prototype(Digidennis.SitePack:ContentContentCollection){
+    attributes.class = ${q(node).property('design') == 'fluid' ? 'container-fluid' : 'container'}
 }

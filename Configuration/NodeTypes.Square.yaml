@@ -5,6 +5,4 @@ Digidennis.SitePack:Square:
     inlineEditable: TRUE
   superTypes:
     'Neos.Neos:Content': TRUE
-  childNodes:
-    squarecontent:
-      type: Neos.Neos:ContentCollection
+    'Neos.Neos:ContentCollection': TRUE

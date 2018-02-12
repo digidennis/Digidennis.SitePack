@@ -31,11 +31,6 @@ Digidennis.SitePack:Homepage:
     footermenu:
       position: 'end'
       type: 'Neos.Neos:ContentCollection'
-      constraints:
-        nodeTypes:
-          '*': FALSE
-          'Neos.NodeTypes:ThreeColumn': TRUE
-          'Neos.NodeTypes:TwoColumn': TRUE
   constraints:
     nodeTypes:
       Digidennis.SitePack:Homepage: FALSE

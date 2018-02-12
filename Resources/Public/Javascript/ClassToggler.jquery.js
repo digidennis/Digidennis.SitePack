@@ -3,10 +3,12 @@
         var plugin = this;
         var $element = $(element), element = element;    // reference to the actual DOM element
         plugin.init = function() {
-            $element.on('click',function(){
+            $element.on('click',function(e){
                 $element.toggleClass($element.data('active-class'));
                 $("html").toggleClass($element.data('document-active-class'));
                 $( $element.data('target-selector')).toggleClass($element.data('target-active-class'));
+                e.preventDefault();
+                return false;
             })
         };
         plugin.init();

@@ -1,0 +1,13 @@
+Digidennis.SitePack:Spacer:
+  ui:
+    label: 'Spacer'
+    icon: 'icon-stop'
+    inspector:
+      groups:
+        main:
+          label: 'Spacer'
+          position: 100
+          icon: 'icon-stop'
+  superTypes:
+    'Neos.Neos:Content': TRUE
+    'Digidennis.SitePack:Classable': TRUE

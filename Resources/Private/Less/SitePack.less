@@ -4,19 +4,17 @@
 @import 'ContentTypes/Slick';
 @import 'ContentTypes/Square';
 @import 'ContentTypes/Circle';
+@import 'ContentTypes/PageList';
 
 
-html.document-noscroll {
-  height: 100%;
+
+html.document-noscroll,
+html.document-noscroll body {
   @media screen {
     @media (max-width: 1349px) {
-      body {
-        height: 100%;
-        overflow: hidden;
-      }
-      section.content{
-        filter:blur(5px);
-      }
+      overflow: hidden;
+      position: relative;
+      height: 100%;
     }
   }
 }
@@ -41,48 +39,73 @@ h2{
     height:auto;
   }
 }
+
+.typo3-neos-alignment-center{
+  text-align: center;
+}
+.typo3-neos-alignment-left{
+  text-align: left;
+  float:left;
+  margin:0 1em 1em 0;
+}
+.typo3-neos-alignment-right{
+  text-align: right;
+  float:right;
+  margin:0 1em 0 1em;
+}
+
+.container-fluid{
+  @media (min-width: 600px) {
+    padding-left:30px;
+    padding-right:30px;
+  }
+  @media (min-width: 768px) {
+    padding-left:45px;
+    padding-right:45px;
+  }
+  @media (min-width: 992px) {
+    padding-left:75px;
+    padding-right:75px;
+  }
+  @media (min-width: 1200px) {
+    padding-left:120px;
+    padding-right:120px;
+  }
+}
 /**
 * HEADER STUFF
 */
-
 .digidennis-sitepack-siteheader {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
   width: 100%;
-  min-width: 20em;
   height: 60px;
   transition: all .5s ease;
   background: linear-gradient(to bottom,rgba(0, 0, 0, 0.35) 0,transparent 100%);
   color: #FFF;
-  .sitelogo img {
-    position: absolute;
-    top: 50%;
-    left: 15px;
+  &.siteheader-hidden {
+    -webkit-transform: translateY(-120px);
+    -ms-transform: translateY(-120px);
+    transform: translateY(-120px);
+  }
+  .sitelogo {
     z-index: 1;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    width: auto;
-    max-width: 200px;
-    height: 30px;
-    fill: currentColor;
-    transition: all .3s ease;
+    float:left;
+    position: relative;
+    img {
+      max-width: 200px;
+      height: auto;
+    }
   }
   .navtoggler {
-    position: absolute;
-    top: 50%;
-    right: 15px;
+    margin-top: 19px;
+    float:right;
+    position: relative;
     z-index: 1;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
   }
   @media screen {
-    @media (min-width: 650px) {
-      height: 80px;
-    }
     @media (max-width: 1349px) {
       nav{
         position: fixed;
@@ -93,9 +116,8 @@ h2{
         transform: translateY(-100%);
         width: 100%;
         height: 100%;
-        padding: 5em 15px 1.5em;
+        padding: 5em 30px 1.5em;
         background: linear-gradient(to bottom,rgba(76, 76, 76, 0.85) 0,#ffffff 100%);
-        transition: .5s ease opacity;
         opacity: 0;
         &.navigation-open {
           -webkit-transform: translateX(0);
@@ -121,21 +143,8 @@ h2{
       }
     }
     @media (min-width: 1350px) {
-      &.siteheader-hidden {
-        -webkit-transform: translateY(-100%);
-        -ms-transform: translateY(-100%);
-        transform: translateY(-100%);
-      }
       &.siteheader-shaded {
-        height: 55px;
         background: #5f5f5f;
-        .sitelogo img {
-          height: 35px;
-        }
-      }
-      .sitelogo img {
-        left: 52px;
-        height: 50px;
       }
       .navtoggler {
         display: none;
@@ -156,7 +165,6 @@ h2{
       transition: all .3s ease;
       color: currentColor;
       &:hover, &:active, &:focus{
-        text-decoration: none;
         background-color: unset;
       }
     }
@@ -166,7 +174,6 @@ h2{
 .digidennis-sitepack-siteheader .nav {
   font-weight: 400;
   font-size: .95em;
-  line-height: 26px;
   & > li {
     position: relative;
   }
@@ -191,7 +198,7 @@ h2{
       }
       li.topcat {
         width: 50%;
-        margin-bottom: 26px;
+        margin-bottom: 15px;
         float: left;
         &:nth-child(odd) {
           clear: both;
@@ -199,23 +206,18 @@ h2{
         & > a {
           font-size: 1.3em;
           font-weight: 100;
-          margin-top: 5px;
-          margin-bottom: 3px;
         }
       }
     }
     @media (min-width: 1350px) {
-      position: absolute;
-      top: 50%;
-      right: 3em;
-      -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
+      float:right;
+      margin-top: 8px;
       & > li{
         display: inline-block;
         margin-left: 52px;
+        padding:14px 5px 0;
         & > a {
-          padding: 5px 0;
+          padding:0;
         }
         &:hover > .nav-sublist {
           opacity: 1;
@@ -284,7 +286,9 @@ h2{
   }
 }
 
+
 .digidennis-sitepack-sitefooter {
+  margin: 0 15px 15px;
   color:white;
   background-color: #5a5a5a;
   .sitelogo img{
@@ -333,3 +337,31 @@ h2{
   }
 }
 
+.figure-triangle-down{
+  border-width: 13px;
+  border-style: solid;
+  border-color: transparent;
+  border-top-color: #469dea;
+  display: block;
+}
+
+.digidennis-sitepack-hero{
+  padding: 4em 0;
+  margin: 0 15px 15px;
+  background-size: cover;
+  @media screen {
+    @media (min-width: 600px) {
+      padding: 6em 0;
+    }
+    @media (min-width: 992px) {
+      padding: 8em 0;
+    }
+    @media (min-width: 1200px) {
+      padding: 10em 0;
+    }
+  }
+}
+
+.digidennis-sitepack-spacer{
+  border-top:2px solid #fff;
+}

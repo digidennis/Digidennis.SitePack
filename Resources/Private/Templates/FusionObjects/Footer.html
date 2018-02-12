@@ -1,22 +1,23 @@
 {namespace neos=Neos\Neos\ViewHelpers}
+{namespace media=Neos\Media\ViewHelpers}
 
-<footer class="digidennis-sitepack-sitefooter container-fluid">
-    {content -> f:format.raw()}
-    <div class="row">
-        <div class="col-md-3">
-            <neos:link.node node="~" class="sitelogo"><f:if condition="{brandlogo}"><neos.media:image image="{brandlogo}" alt="{logoalt}"/></f:if></neos:link.node>
-        </div>
-        <div class="col-md-3">
-            <h3>{site.context.currentSite.name}</h3>
-            {menu -> f:format.raw()}
-        </div>
-        <div class="col-md-6">
-            {menucollection -> f:format.raw()}
+<footer class="digidennis-sitepack-sitefooter">
+    <div class="container-fluid">
+        {content -> f:format.raw()}
+        <div class="digidennis-sitepack-sitefooter-properties">
+            <div class="row">
+                <div class="col-sm-3">
+                    <neos:link.node node="~" class="sitelogo"><f:if condition="{brandlogo}"><media:image image="{brandlogo}" alt="{logoalt}"/></f:if></neos:link.node>
+                </div>
+                <div class="col-sm-3">
+                    <h3>{site.context.currentSite.name}</h3>
+                    {menu -> f:format.raw()}
+                </div>
+                <div class="col-sm-6">
+                    {menucollection -> f:format.raw()}
+                </div>
+            </div>
         </div>
     </div>
-
     <neos:contentElement.editable property="footerlegal" class="center-block legal"></neos:contentElement.editable>
-
 </footer>
-
-

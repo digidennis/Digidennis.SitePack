@@ -1,13 +1,14 @@
-{namespace neos=Neos\Neos\ViewHelpers}
+{namespace media=Neos\Media\ViewHelpers}
 
 <f:if condition="{image}">
     <f:then>
         <img alt="{alternativeText}"
+             data-node-identifier="{node.identifier}"
              title="{title}"
-            <f:if condition="{thumbnav}">data-thumb="{neos.media:uri.image(image: image, width: 60, height: 40, allowCropping: true )}"</f:if>
+            <f:if condition="{thumbnav}">data-thumb="{media:uri.image(image: image, width: 60, height: 40, allowCropping: true )}"</f:if>
             <f:if condition="{cropImage}">
-                <f:then>data-lazy="{neos.media:uri.image(image: image, width: slideWidth, height: slideHeight, allowCropping: allowCropping )}"</f:then>
-                <f:else>data-lazy="{neos.media:uri.image(image: image)}" </f:else>
+                <f:then>data-lazy="{media:uri.image(image: image, width: slideWidth, height: slideHeight, allowCropping: allowCropping )}"</f:then>
+                <f:else>data-lazy="{media:uri.image(image: image)}" </f:else>
             </f:if>
         />
     </f:then>

@@ -1,0 +1,70 @@
+prototype(Digidennis.SitePack:PageList) < prototype(Content) {
+    attributes.class = 'row'
+    list = Neos.Fusion:Collection {
+        collection = Neos.Fusion:Case {
+            selected{
+                condition = ${q(node).property('selected')}
+                renderer = ${q(node).property('selected')}
+            }
+            selectedroot{
+                condition = ${q(node).property('root')}
+                renderer = ${q(q(node).property('root')).children('[instanceof Digidennis.SitePack:StdPage]').get()}
+            }
+            root {
+                condition = ${q(documentNode).children('[instanceof Digidennis.SitePack:StdPage]').count() > 0}
+                renderer = ${q(documentNode).children('[instanceof Digidennis.SitePack:StdPage]').get()}
+            }
+        }
+        itemName = 'node'
+        itemRenderer = Digidennis.SitePack:PageListRenderer
+    }
+    @context.listcount = Neos.Fusion:Case {
+        selected{
+            condition = ${q(node).property('selected')}
+            renderer = ${q(q(node).property('selected')).count()}
+        }
+        selectedroot{
+            condition = ${q(node).property('root')}
+            renderer = ${q(q(node).property('root')).children('[instanceof Digidennis.SitePack:StdPage]').count()}
+        }
+        root {
+            condition = ${q(documentNode).children('[instanceof Digidennis.SitePack:StdPage]').count() > 0}
+            renderer = ${q(documentNode).children('[instanceof Digidennis.SitePack:StdPage]').count()}
+        }
+    }
+}
+
+prototype(Digidennis.SitePack:PageListRenderer) < prototype(Neos.Fusion:Template) {
+    colwidth = Neos.Fusion:Case{
+        onecol{
+            condition = ${listcount == 1}
+            renderer = '12'
+        }
+        twocol{
+            condition = ${listcount == 2}
+            renderer = '6'
+        }
+        threecol{
+            condition = ${listcount == 3}
+            renderer = '4'
+        }
+        fitsthreecol{
+            condition = ${listcount % 3 == 0}
+            renderer = '4'
+        }
+        fallback{
+            condition = TRUE
+            renderer = '3'
+        }
+    }
+    node = ${node}
+    templatePath = 'resource://Digidennis.SitePack/Private/Templates/FusionObjects/PageListRenderer.html'
+    icon = Neos.Neos:ImageTag {
+        asset = ${q(node).property('icon')}
+        attributes.alt = ${q(node).property('title')}
+    }
+    title = ${q(node).property('title')}
+    link = Neos.Neos:NodeUri {
+        node = ${node}
+    }
+}

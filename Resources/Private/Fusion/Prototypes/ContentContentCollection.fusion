@@ -1,0 +1,13 @@
+prototype(Digidennis.SitePack:ContentContentCollection) < prototype(Neos.Neos:ContentCollection){
+    attributes.class.@process.nodeType = Neos.Fusion:Case {
+        @context.nodeTypeClassName = ${String.toLowerCase(String.pregReplace(q(node).property('_nodeType.name'), '/[[:^alnum:]]/', '-'))}
+        classIsString {
+            condition = ${Type.isString(value)}
+            renderer = ${String.trim(value) + ' ' + nodeTypeClassName}
+        }
+        classIsArray {
+            condition = ${Type.isArray(value)}
+            renderer = ${Array.push(value, nodeTypeClassName)}
+        }
+    }
+}

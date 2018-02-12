@@ -1,0 +1,12 @@
+prototype(Digidennis.SitePack:GoogleMaps) < prototype(Neos.Neos:Content){
+
+    attributes.style = ${'height:' + q(node).property('height') + ';width:' +  q(node).property('width') + ';'}
+    longitude = ${q(node).property('longitude')}
+    latitude = ${q(node).property('latitude')}
+    zoomlevel = ${q(node).property('zoomlevel')}
+    infoheadl = ${q(node).property('infoheadl')}
+    infotext = ${q(node).property('infotext')}
+    popupHeight = ${q(node).property('popupHeight')}
+    popupWidth = ${q(node).property('popupWidth')}
+    draggable = ${q(node).property('draggable') == true ? 'true' : 'false'}
+}

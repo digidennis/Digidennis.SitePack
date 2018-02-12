@@ -1,0 +1,31 @@
+Digidennis.SitePack:PageList:
+  ui:
+    label: 'Pagelist'
+    icon: 'icon-list-alt'
+    inspector:
+      groups:
+        main:
+          label: 'Pagelist'
+          position: 100
+          icon: 'icon-list-alt'
+  superTypes:
+    'Neos.Neos:Content': TRUE
+  properties:
+    root:
+      type: reference
+      ui:
+        reloadIfChanged: TRUE
+        label: 'Root'
+        inspector:
+          group: 'main'
+          editorOptions:
+            nodeTypes: ['Digidennis.SitePack:StdPage']
+    selected:
+      type: references
+      ui:
+        reloadIfChanged: TRUE
+        label: 'Selected'
+        inspector:
+          group: 'main'
+          editorOptions:
+            nodeTypes: ['Digidennis.SitePack:StdPage']

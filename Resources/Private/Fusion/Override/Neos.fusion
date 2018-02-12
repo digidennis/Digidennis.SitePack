@@ -1,11 +1,4 @@
 prototype(Neos.Neos:ContentCollection){
-
-    # The following is used to automatically append class attribute with "neos-contentcollection" needed for editing.
-    # You can disable the following line with:
-    # prototype(Neos.Neos:ContentCollection) {
-    #   attributes.class.@process.collectionClass >
-    # }
-    # in your site's TypoScript if you don't need that behavior
     attributes.class.@process.collectionClass = Neos.Fusion:Case {
         @context.collectionClass = 'neos-contentcollection'
         classIsString {
@@ -29,5 +22,18 @@ prototype(Neos.NodeTypes:MultiColumn) {
 # Adjust "MultiColumnItem" element to Twitter bootstrap CSS classes
 #
 prototype(Neos.NodeTypes:MultiColumnItem) {
-    attributes.class = ${'col-' + q(node).parent().property('breakpoint') + '-' + String.split(q(node).parent().property('layout'), '-')[multiColumnIteration.index]}
+    attributes.class =  Neos.Fusion:RawArray {
+        normal = ${'col-' + q(node).parent().property('breakpoint') + '-' + String.split(q(node).parent().property('layout'), '-')[multiColumnIteration.index]}
+        break = Neos.Fusion:Case{
+            isLastNotSmall{
+                condition = ${multiColumnIteration.index == 2 && q(node).parent().property('breakpoint') != 'sm'}
+                renderer = ${'col-sm-12'}
+            }
+            1or2NotSmall{
+                condition = ${multiColumnIteration.index < 2 && q(node).parent().property('breakpoint') != 'sm'}
+                renderer = ${'col-sm-6'}
+            }
+            @if.shouldbreak = ${q(node).parent().property('smallbreak')}
+        }
+    }
 }

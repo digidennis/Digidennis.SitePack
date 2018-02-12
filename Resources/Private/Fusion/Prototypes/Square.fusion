@@ -1,9 +1,6 @@
-prototype(Digidennis.SitePack:Square) < prototype(Content){
-    squarecontent = ContentCollection{
-        nodePath = 'squarecontent'
-    }
+prototype(Digidennis.SitePack:Square) < prototype(Digidennis.SitePack:ContentContentCollection){
     prototype(Digidennis.SitePack:Circle){
         attributes.class = 'insquare'
     }
-    attributes.class = ${q(node).children('squarecontent').children().first().property('_nodeType').name == 'Digidennis.SitePack:Circle' ? 'hascirclestart':''}
+    attributes.class = ${q(node).children().first().property('_nodeType').name == 'Digidennis.SitePack:Circle' ? 'hascirclestart':''}
 }

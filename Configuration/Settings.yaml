@@ -3,20 +3,10 @@ Digidennis:
     Slick:
       'useCss': TRUE
       'renderBackend': TRUE
+    GoogleMaps:
+          googleApiKey: 'AIzaSyAYdNhIWrA3eKa_WPh1_IXt3JPBDR4SiqE'
 
 Neos:
-  ContentRepository:
-    contentDimensions:
-      'language':
-        label: 'Language'
-        icon: 'icon-language'
-        default: 'da'
-        defaultPreset: 'da'
-        presets:
-          'da':
-            label: 'Dansk'
-            values: ['da']
-            uriSegment: 'dansk'
   Neos:
     fusion:
       autoInclude:

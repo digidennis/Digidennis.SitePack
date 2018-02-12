@@ -1,0 +1,7 @@
+'Digidennis.SitePack:ImageFixed':
+  superTypes:
+    'Neos.NodeTypes:Image': TRUE
+  ui:
+    label: 'Image Fixed'
+    icon: 'icon-picture'
+    position: 300

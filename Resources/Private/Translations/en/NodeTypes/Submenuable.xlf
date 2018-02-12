@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file original="" product-name="Digidennis.SitePack" source-language="en" datatype="plaintext" >
+        <body>
+            <trans-unit id="properties.submenuable" xml:space="preserve">
+                <source>Show in submenu</source>
+            </trans-unit>
+            <trans-unit id="properties.useasroot" xml:space="preserve">
+                <source>Use as submenu root</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

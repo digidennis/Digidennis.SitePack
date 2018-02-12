@@ -1,0 +1,15 @@
+Digidennis.SitePack:StdPage:
+  ui:
+    label: 'Standard Side'
+  superTypes:
+    Neos.NodeTypes:Page: TRUE
+    Digidennis.SitePack:Heroable: TRUE
+  properties:
+    showpagemenu:
+      type: boolean
+      defaultValue: FALSE
+      ui:
+        label: 'Vis sidemenu'
+        inspector:
+          group: 'visibility'
+          position: 90

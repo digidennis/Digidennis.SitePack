@@ -1,0 +1,3 @@
+prototype(Digidennis.SitePack:Spacer) < prototype(Content){
+
+}

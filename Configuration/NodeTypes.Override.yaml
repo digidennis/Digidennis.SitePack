@@ -5,6 +5,7 @@ Neos.Neos:ContentCollection:
 Neos.NodeTypes:Page:
   superTypes:
     Digidennis.SitePack:Metamenuable: TRUE
+    Digidennis.SitePack:Iconable: TRUE
 
 'Neos.NodeTypes:Column':
   properties:
@@ -14,7 +15,6 @@ Neos.NodeTypes:Page:
       ui:
         label: 'Breakpoint'
         inspector:
-          group: 'column'
           editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
           editorOptions:
             values:
@@ -75,6 +75,14 @@ Neos.NodeTypes:Page:
                 label: '-|----|-'
               '3-3-6':
                 label: '-|-|----'
+    smallbreak:
+      type: boolean
+      defaultValue: FALSE
+      ui:
+        reloadIfChanged: TRUE
+        label: 'Break small'
+        inspector:
+          group: 'column'
 
 ##
 # Adjust the "FourColumn" node type:

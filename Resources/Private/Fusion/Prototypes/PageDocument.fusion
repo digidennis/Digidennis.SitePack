@@ -11,13 +11,6 @@ prototype(Neos.NodeTypes:Page.Document) < prototype(Page) {
             }
         }
         stylesheets{
-            google-fonts = Neos.Fusion:Tag{
-                tagName = 'link'
-                attributes {
-                    rel = 'stylesheet'
-                    href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,200i,300,400,700,900"
-                }
-            }
             fontawesome = Neos.Fusion:Tag{
                 tagName = 'link'
                 attributes {
@@ -43,6 +36,17 @@ prototype(Neos.NodeTypes:Page.Document) < prototype(Page) {
                     crossorigin="anonymous"
                 }
             }
+            backendstyles = Neos.Fusion:Tag{
+                tagName = 'link'
+                attributes {
+                    media = 'all'
+                    rel = 'stylesheet'
+                    href = Neos.Fusion:ResourceUri {
+                        path = 'resource://Digidennis.SitePack/Public/Styles/Backend.css'
+                    }
+                }
+                @if.backend = ${node.context.inBackend}
+            }
             minify-output = Digidennis.Minify:Output{
                 type = 'css'
                 group = 'csshead'
@@ -56,9 +60,10 @@ prototype(Neos.NodeTypes:Page.Document) < prototype(Page) {
     body {
         templatePath = 'resource://Digidennis.SitePack/Private/Templates/Page/Default.html'
         sectionName = 'body'
+        title = ${q(node).property('title')}
         parts {
             menu = Menu{
-                templatePath = 'resource://Digidennis.SitePack/Private/Templates/TypoScriptObjects/Menu.html'
+                templatePath = 'resource://Digidennis.SitePack/Private/Templates/FusionObjects/Menu.html'
                 logo = ${q(site).filter("[instanceof Digidennis.SitePack:Homepage]").property('logo')}
                 logoalt = ${q(site).filter("[instanceof Digidennis.SitePack:Homepage]").property('title')}
                 postmenuitems = Neos.Fusion:Array
@@ -66,13 +71,20 @@ prototype(Neos.NodeTypes:Page.Document) < prototype(Page) {
                     nodePath = ${q(site).children('headercontent').property('_path')}
                 }
             }
+            breadcrumbs = BreadcrumbMenu
+            pagemenu = Menu {
+                attributes.class = "neos-nodetypes-menu"
+                maximumLevels = 1
+                entryLevel = 2
+            }
             footer = Content{
-                templatePath = 'resource://Digidennis.SitePack/Private/Templates/TypoScriptObjects/Footer.html'
+                templatePath = 'resource://Digidennis.SitePack/Private/Templates/FusionObjects/Footer.html'
                 brandlogo = ${q(site).filter("[instanceof Digidennis.SitePack:Homepage]").property('brand')}
                 logoalt = ${q(site).filter("[instanceof Digidennis.SitePack:Homepage]").property('title')}
                 site = ${site}
                 node = ${q(site).filter("[instanceof Digidennis.SitePack:Homepage]")}
                 content = ContentCollection{
+                    attributes.class = 'digidennis-sitepack-sitefooter-content'
                     nodePath = ${q(site).children('footercontent').property('_path')}
                 }
                 menucollection = ContentCollection{
@@ -80,7 +92,7 @@ prototype(Neos.NodeTypes:Page.Document) < prototype(Page) {
                 }
                 footerlegal = ${q(site).property('footerlegal')}
                 menu = Menu{
-                    templatePath = 'resource://Digidennis.SitePack/Private/Templates/TypoScriptObjects/FooterMenu.html'
+                    templatePath = 'resource://Digidennis.SitePack/Private/Templates/FusionObjects/FooterMenu.html'
                     itemCollection = ${q(site).find('[instanceof Neos.NodeTypes:Page]').filter('[metamenuable=TRUE]').get()}
                     maximumLevels = 1
                 }
@@ -89,6 +101,7 @@ prototype(Neos.NodeTypes:Page.Document) < prototype(Page) {
         content {
             main = PrimaryContent {
                 nodePath = 'main'
+
             }
         }
         javascripts.jquery = Neos.Fusion:Tag{
@@ -108,6 +121,17 @@ prototype(Neos.NodeTypes:Page.Document) < prototype(Page) {
                 crossorigin="anonymous"
             }
             @position = "before minify"
+        }
+        javascripts.googlemaps = Neos.Fusion:Tag {
+            tagName = 'script'
+            omitClosingTag = FALSE
+            attributes {
+                async = ''
+                defer = ''
+                debuginfo = ${q(node).find('[instanceof Digidennis.SitePack:GoogleMaps]').count()}
+                src = ${'https://maps.googleapis.com/maps/api/js?key=' + Configuration.setting('Digidennis.SitePack.GoogleMaps.googleApiKey') + '&callback=initMap'}
+            }
+            @if.hasNodeType = ${q(documentNode).children('main').find('[instanceof Digidennis.SitePack:GoogleMaps]').is()}
         }
         javascripts.minify {
             scrollclass = Digidennis.Minify:Resource{

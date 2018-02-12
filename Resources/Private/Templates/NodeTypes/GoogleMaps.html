@@ -1,0 +1,75 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+<div{attributes -> f:format.raw()}>
+<style>
+    #axovis-map-canvas {height: 100%}
+</style>
+
+<div id="axovis-map-canvas">
+</div>
+
+<script>
+    var map;
+    <![CDATA[
+    function initMap() {
+        var myLatlng = new google.maps.LatLng(]]>{longitude}<![CDATA[,]]>{latitude}<![CDATA[);
+        var mapOptions = {
+            zoom: ]]>{zoomlevel}<![CDATA[,
+            center: myLatlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            panControl: false,
+            rotateControl: false,
+            scrollwheel: false,
+            scaleControl: false,
+            draggable: ]]>{draggable}<![CDATA[
+        };
+        var styles = [
+            {
+                featureType: "all",
+                stylers: [
+                    { saturation: -100 }
+                ]
+            },{
+                featureType: "poi.business",
+                elementType: "labels",
+                stylers: [
+                    { visibility: "off" }
+                ]
+            }
+        ];
+        // Create a new StyledMapType object, passing it the array of styles,
+        // as well as the name to be displayed on the map type control.
+        var styledMap = new google.maps.StyledMapType(styles,
+            {name: "Styled Map"});
+
+        map = new google.maps.Map(document.getElementById('axovis-map-canvas'), mapOptions);
+
+        //Associate the styled map with the MapTypeId and set it to display.
+        map.mapTypes.set('map_style', styledMap);
+        map.setMapTypeId('map_style');
+
+        var contentString = '<div id="content" style="height: ]]>{popupHeight}<![CDATA[; width: ]]>{popupWidth}<![CDATA[">'+
+            '<div id="site-notice">'+
+            '</div>'+
+            '<h4 id="first-heading" class="firstHeading">]]>{infoheadl}<![CDATA[</h4>'+
+            '<div id="body-content">'+
+            '<p>]]> <f:format.raw>{infotext}</f:format.raw> <![CDATA[</p>'+
+            '</div>'+
+            '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: 'InspiringFlow'
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
+        });
+        infowindow.open(map,marker);
+    }
+    ]]>
+</script>
+</div>
