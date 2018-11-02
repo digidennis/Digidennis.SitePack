@@ -16,6 +16,7 @@
                     if(plugin.settings.currentScrollPos > key ){
                         if(!$element.hasClass(value.class)){
                             $element.toggleClass(value.class);
+                            //$element.trigger("ScrollClassToggler", ["Add" , value.class]);
                         }
                     } else {
                         if($element.hasClass(value.class)){
@@ -24,6 +25,7 @@
                     }
                     if(plugin.settings.currentScrollPos < plugin.settings.lastScrollPos && value.removeOnReverse ) {
                         $element.removeClass(value.class);
+                        //$element.trigger("ScrollClassToggler", ["ReverseRemove" , value.class]);
                     }
                 });
                 plugin.settings.lastScrollPos = plugin.settings.currentScrollPos;
