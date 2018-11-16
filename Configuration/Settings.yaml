@@ -1,5 +1,6 @@
 Digidennis:
   SitePack:
+    accessToken: '8641614162.9049c16.62b1d0fa7e634e79a3b3c24ca410142b'
     Slick:
       'useCss': TRUE
       'renderBackend': TRUE
@@ -15,3 +16,6 @@ Neos:
       translation:
         autoInclude:
           'Digidennis.SitePack': ['NodeTypes/*']
+  Fusion:
+    defaultContext:
+      'Instagram': 'Digidennis\SitePack\Eel\Instagram'
