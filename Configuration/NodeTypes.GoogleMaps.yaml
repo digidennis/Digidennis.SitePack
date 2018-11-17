@@ -90,3 +90,19 @@ Digidennis.SitePack:GoogleMaps:
         reloadIfChanged: true
         inspector:
           group: googlemaps
+    showinfobox:
+      type: boolean
+      defaultValue: true
+      ui:
+        label: 'Show infobox:'
+        reloadIfChanged: true
+        inspector:
+          group: googlemaps
+    assatellite:
+      type: boolean
+      defaultValue: true
+      ui:
+        label: 'As Satellite:'
+        reloadIfChanged: true
+        inspector:
+          group: googlemaps

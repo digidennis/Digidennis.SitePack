@@ -9,4 +9,6 @@ prototype(Digidennis.SitePack:GoogleMaps) < prototype(Neos.Neos:Content){
     popupHeight = ${q(node).property('popupHeight')}
     popupWidth = ${q(node).property('popupWidth')}
     draggable = ${q(node).property('draggable') == true ? 'true' : 'false'}
+    showinfobox = ${q(node).property('showinfobox')}
+    assatellite = ${q(node).property('assatellite')}
 }

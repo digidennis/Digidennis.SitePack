@@ -45,7 +45,13 @@
 
         //Associate the styled map with the MapTypeId and set it to display.
         map.mapTypes.set('map_style', styledMap);
-        map.setMapTypeId('map_style');
+
+        ]]>
+        <f:if condition="{assatellite}">
+            <f:then>map.setMapTypeId('satellite');</f:then>
+            <f:else>map.setMapTypeId('map_style');</f:else>
+        </f:if>
+        <![CDATA[
 
         var contentString = '<div id="content" style="height: ]]>{popupHeight}<![CDATA[; width: ]]>{popupWidth}<![CDATA[">'+
             '<div id="site-notice">'+
@@ -63,12 +69,12 @@
         var marker = new google.maps.Marker({
             position: myLatlng,
             map: map,
-            title: 'KBH SKUM ApS'
+            title: ']]>{infoheadl}<![CDATA['
         });
         google.maps.event.addListener(marker, 'click', function() {
             infowindow.open(map,marker);
         });
-        //infowindow.open(map,marker);
+        ]]><f:if condition="{showinfobox}">infowindow.open(map,marker);</f:if><![CDATA[
     }
     ]]>
 </script>
