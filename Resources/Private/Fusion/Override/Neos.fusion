@@ -13,27 +13,24 @@ prototype(Neos.Neos:ContentCollection){
     }
 }
 
-prototype(Neos.NodeTypes:MultiColumn) {
+prototype(Neos.NodeTypes.ColumnLayouts:MultiColumn) {
     attributes.class = 'row'
     columns.iterationName = 'multiColumnIteration'
-}
-
-##
-# Adjust "MultiColumnItem" element to Twitter bootstrap CSS classes
-#
-prototype(Neos.NodeTypes:MultiColumnItem) {
-    attributes.class =  Neos.Fusion:RawArray {
-        normal = ${'col-' + q(node).parent().property('breakpoint') + '-' + String.split(q(node).parent().property('layout'), '-')[multiColumnIteration.index]}
-        break = Neos.Fusion:Case{
-            isLastNotSmall{
-                condition = ${multiColumnIteration.index == 2 && q(node).parent().property('breakpoint') != 'sm'}
-                renderer = ${'col-sm-12'}
+    prototype(Neos.NodeTypes.ColumnLayouts:MultiColumnItem) {
+        attributes.class =  Neos.Fusion:RawArray {
+            normal = ${'col-' + q(node).parent().property('breakpoint') + '-' + String.split(q(node).parent().property('layout'), '-')[multiColumnIteration.index]}
+            break = Neos.Fusion:Case{
+                isLastNotSmall{
+                    condition = ${multiColumnIteration.index == 2 && q(node).parent().property('breakpoint') != 'sm'}
+                    renderer = ${'col-sm-12'}
+                }
+                1or2NotSmall{
+                    condition = ${multiColumnIteration.index < 2 && q(node).parent().property('breakpoint') != 'sm'}
+                    renderer = ${'col-sm-6'}
+                }
+                @if.shouldbreak = ${q(node).parent().property('smallbreak')}
             }
-            1or2NotSmall{
-                condition = ${multiColumnIteration.index < 2 && q(node).parent().property('breakpoint') != 'sm'}
-                renderer = ${'col-sm-6'}
-            }
-            @if.shouldbreak = ${q(node).parent().property('smallbreak')}
+            collectionclass =  ${node.properties.class}
         }
     }
 }
