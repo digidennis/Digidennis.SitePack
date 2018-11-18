@@ -8,26 +8,6 @@ $(document).ready(function(){
         initSlickFromConfig(this);
     });
 
-    /**
-     * event hooks for slick focusable buttons
-     */
-    /*$(".slick-node[data-slick-focusable='1'] .slick-slide").on('click',function(e){
-        var index = $(this).data('slick-index');
-        var $slicknode = $(this).parents('.slick-node').first();
-        if( $(this).hasClass('focused')) {
-            var slidesToShow = $slicknode.data('slick-slidesToShow' );
-            $(this).removeClass('focused');
-            initSlickFromConfig($slicknode);
-        } else {
-            $slicknode.slick('unslick');
-            $(this).addClass('focused');
-        }
-        e.preventDefault();
-    });
-    $("[data-component='SlickFocusable'] > button.slick-focusable-close").on('click',function(e){
-        e.preventDefault();
-    });*/
-
     $(".digidennis-sitepack-siteheader").each(function(){
         var config = $(this).data('scrollclasstoggler-config');
         $(this).ScrollClassToggler({'config': config });
@@ -42,7 +22,7 @@ $(document).ready(function(){
 });
 function initSlickFromConfig( slicknode ) {
 
-    let options = $(slicknode).data('slick-options');
+    var options = $(slicknode).data('slick-options');
 
     //if thumbnav
     if($(slicknode).data('slick-thumbnav') === 1){

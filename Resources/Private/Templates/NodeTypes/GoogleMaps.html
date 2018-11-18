@@ -48,7 +48,7 @@
 
         ]]>
         <f:if condition="{assatellite}">
-            <f:then>map.setMapTypeId('satellite');</f:then>
+            <f:then>map.setMapTypeId(google.maps.MapTypeId.HYBRID);</f:then>
             <f:else>map.setMapTypeId('map_style');</f:else>
         </f:if>
         <![CDATA[
