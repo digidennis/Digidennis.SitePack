@@ -273,3 +273,22 @@ Digidennis.SitePack:Slickable:
         reloadIfChanged: TRUE
         inspector:
           group: image
+
+Digidennis.SitePack:Alertable:
+  abstract: TRUE
+  properties:
+    alertactive:
+      type: boolean
+      defaultValue: FALSE
+      ui:
+        label: 'Vis besked'
+        inspector:
+          group: 'visibility'
+          position: 90
+    alert:
+      type: 'string'
+      ui:
+        label: 'Besked'
+        inspector:
+          group: 'visibility'
+          editor: 'Neos.Neos/Inspector/Editors/CodeEditor'

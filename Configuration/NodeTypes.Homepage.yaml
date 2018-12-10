@@ -10,6 +10,7 @@ Digidennis.SitePack:Homepage:
       message: 'The homepage type is to be used only once, adds collection for header & footer.'
   superTypes:
     'Neos.NodeTypes:Page': TRUE
+    Digidennis.SitePack:Alertable: TRUE
   childNodes:
     headercontent:
       position: 'start'

@@ -1,0 +1,8 @@
+prototype(Digidennis.SitePack:SiteAlert) < prototype(Neos.Fusion:Tag){
+    tagName = 'div'
+    attributes{
+        class = 'digidennis-sitepack-sitealert'
+    }
+    content = ${q(site).property('alert')}
+    @if.active = ${q(site).property('alertactive')}
+}
